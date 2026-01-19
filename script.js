@@ -1,8 +1,9 @@
-import { mockUser, mockRepos } from './mockData.js';
+import { mockUser, mockRepos, mockReadme } from './mockData.js';
 
 const IS_DEV_MODE = false;
 let currentUsername = 'igorrm19';
 const BASE_API_URL = 'https://api.github.com/users';
+const REPO_API_URL = 'https://api.github.com/repos';
 
 const profileSection = document.getElementById('profile-section');
 const reposGrid = document.getElementById('repos-grid');
@@ -18,41 +19,73 @@ async function fetchData(endpoint) {
 
         if (endpoint === 'user') return mockUser;
         if (endpoint === 'repos') return mockRepos;
+        if (endpoint === 'readme') return mockReadme;
         return null;
     }
 
     try {
-        const url = endpoint === 'user'
-            ? `${BASE_API_URL}/${currentUsername}`
-            : `${BASE_API_URL}/${currentUsername}/repos?sort=updated&per_page=100`;
+        let url;
+        let headers = {};
 
-        const response = await fetch(url);
+        if (endpoint === 'user') {
+            url = `${BASE_API_URL}/${currentUsername}`;
+        } else if (endpoint === 'repos') {
+            url = `${BASE_API_URL}/${currentUsername}/repos?sort=updated&per_page=100`;
+        } else if (endpoint === 'readme') {
+            // README do repositório especial (username/username)
+            url = `${REPO_API_URL}/${currentUsername}/${currentUsername}/readme`;
+            headers = { 'Accept': 'application/vnd.github.html' };
+        }
+
+        const response = await fetch(url, { headers });
 
         if (!response.ok) {
+            // Se o README não existir (404), apenas retornamos null sem erro crítico
+            if (endpoint === 'readme' && response.status === 404) {
+                return null;
+            }
             if (response.status === 403) {
                 throw new Error('Limite da API excedido. Tente novamente mais tarde.');
             }
             if (response.status === 404) {
-                throw new Error('Usuário não encontrado.');
+                if (endpoint === 'user') throw new Error('Usuário não encontrado.');
+                return null;
             }
             throw new Error(`Erro HTTP: ${response.status}`);
         }
 
+        if (endpoint === 'readme') {
+            return await response.text(); // README vem como HTML text
+        }
+
         return await response.json();
     } catch (error) {
-        console.error('Erro na busca:', error);
+        console.error(`Erro na busca (${endpoint}):`, error);
+        if (endpoint === 'readme') return null; // Falha no readme não quebra o app
         throw error;
     }
 }
 
-function renderProfile(userData) {
+function renderProfile(userData, readmeContent) {
+    // Limpar apenas o conteúdo, mantendo estrutura se possível, mas aqui vamos reconstruir
+    // Como mudamos a estrutura no HTML para ter profile-header e profile__readme, vamos renderizar dentro deles
+
+    // Recriar estrutura base se limparmos tudo
     profileSection.innerHTML = '';
+
+    const profileHeader = document.createElement('div');
+    profileHeader.className = 'profile-header';
+
+    const readmeContainer = document.createElement('div');
+    readmeContainer.className = 'profile__readme';
+    readmeContainer.id = 'readme-container';
 
     if (!userData) {
         renderError(profileSection, "Nenhum dado de usuário encontrado.");
         return;
     }
 
+    // -- Avatar --
     const avatarDiv = document.createElement('div');
     avatarDiv.className = 'profile__avatar';
     const avatarImg = document.createElement('img');
@@ -60,6 +93,7 @@ function renderProfile(userData) {
     avatarImg.alt = userData.login;
     avatarDiv.appendChild(avatarImg);
 
+    // -- Info --
     const infoDiv = document.createElement('div');
     infoDiv.className = 'profile__info';
 
@@ -110,8 +144,17 @@ function renderProfile(userData) {
         infoDiv.appendChild(link);
     }
 
-    profileSection.appendChild(avatarDiv);
-    profileSection.appendChild(infoDiv);
+    profileHeader.appendChild(avatarDiv);
+    profileHeader.appendChild(infoDiv);
+
+    profileSection.appendChild(profileHeader);
+
+    // -- Readme --
+    if (readmeContent) {
+        readmeContainer.innerHTML = readmeContent; // GitHub HTML is safe
+        readmeContainer.classList.remove('hidden');
+        profileSection.appendChild(readmeContainer);
+    }
 }
 
 function renderRepos(reposData) {
@@ -217,12 +260,13 @@ async function init() {
         profileSection.innerHTML = loadingHtml;
         reposGrid.innerHTML = loadingHtml;
 
-        const [userData, reposData] = await Promise.all([
+        const [userData, reposData, readmeData] = await Promise.all([
             fetchData('user'),
-            fetchData('repos')
+            fetchData('repos'),
+            fetchData('readme')
         ]);
 
-        renderProfile(userData);
+        renderProfile(userData, readmeData);
         renderRepos(reposData);
 
         showSection('profile');

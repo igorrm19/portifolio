@@ -51,10 +51,15 @@
 
     <main class="main" id="main">
         <section class="profile" id="profile-section">
-            <div class="profile__avatar">
-                <div class="loading">Carregando Perfil...</div>
+            <div class="profile-header">
+                <div class="profile__avatar">
+                    <div class="loading">Carregando Perfil...</div>
+                </div>
+                <div class="profile__info">
+                </div>
             </div>
-            <div class="profile__info">
+            <div class="profile__readme hidden" id="readme-container">
+                <!-- Readme content will comprise HTML injected from GitHub API -->
             </div>
         </section>
 

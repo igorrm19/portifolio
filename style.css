@@ -423,3 +423,108 @@ main {
         transform: translateY(0);
     }
 }
+
+/* Readme Styles */
+.profile-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 1.5rem;
+    width: 100%;
+}
+
+@media (min-width: 768px) {
+    .profile-header {
+        flex-direction: row;
+        text-align: left;
+        align-items: flex-start;
+        gap: 2rem;
+    }
+}
+
+.profile__readme {
+    width: 100%;
+    margin-top: 2rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--border-default);
+    color: var(--text-primary);
+    line-height: 1.6;
+    overflow-x: auto;
+}
+
+/* Markdown Styles (Generic) */
+.profile__readme h1,
+.profile__readme h2,
+.profile__readme h3 {
+    margin-bottom: 1rem;
+    margin-top: 2rem;
+    border-bottom: 1px solid var(--border-muted);
+    padding-bottom: 0.5rem;
+    color: var(--text-primary);
+}
+
+.profile__readme h1 {
+    font-size: 2rem;
+}
+
+.profile__readme h2 {
+    font-size: 1.5rem;
+}
+
+.profile__readme h3 {
+    font-size: 1.25rem;
+}
+
+.profile__readme p {
+    margin-bottom: 1rem;
+}
+
+.profile__readme a {
+    color: var(--accent-primary);
+    text-decoration: none;
+}
+
+.profile__readme a:hover {
+    text-decoration: underline;
+}
+
+.profile__readme ul,
+.profile__readme ol {
+    margin-bottom: 1rem;
+    padding-left: 2rem;
+}
+
+.profile__readme img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 6px;
+    background-color: transparent;
+}
+
+.profile__readme pre,
+.profile__readme code {
+    background-color: var(--bg-tertiary);
+    padding: 0.2rem 0.4rem;
+    border-radius: 4px;
+    font-family: monospace;
+    font-size: 0.9em;
+}
+
+.profile__readme pre {
+    padding: 1rem;
+    overflow-x: auto;
+    margin-bottom: 1rem;
+}
+
+.profile__readme pre code {
+    background-color: transparent;
+    padding: 0;
+}
+
+.profile__readme blockquote {
+    border-left: 4px solid var(--border-default);
+    padding-left: 1rem;
+    color: var(--text-secondary);
+    margin-bottom: 1rem;
+}

@@ -16,6 +16,20 @@ export const mockUser = {
     updated_at: "2026-01-14T19:10:39Z"
 };
 
+export const mockReadme = `
+<div class="markdown-body">
+  <h1>Olá, eu sou Igor! 👋</h1>
+  <p>Bem-vindo ao meu portfólio.</p>
+  <h3>Tech Stack</h3>
+  <ul>
+    <li>JavaScript</li>
+    <li>HTML/CSS</li>
+    <li>React</li>
+  </ul>
+  <img src="https://via.placeholder.com/600x200" alt="Banner" />
+</div>
+`;
+
 export const mockRepos = [
     {
         id: 1,
