@@ -1,35 +1,57 @@
 export const mockUser = {
     login: "igorrm19",
-    id: 123456,
-    avatar_url: "https://avatars.githubusercontent.com/u/1010101?v=4",
+    id: 107290125,
+    avatar_url: "https://avatars.githubusercontent.com/u/107290125?v=4",
     html_url: "https://github.com/igorrm19",
-    name: "Igor M.",
+    name: "Igor Rodrigues Machado",
     company: null,
-    blog: "https://portfolio.com",
-    location: "Brazil",
+    blog: "",
+    location: "Vitoria da conquista - BA",
     email: null,
     bio: "Full Stack Developer | JavaScript Enthusiast",
-    public_repos: 15,
-    followers: 42,
-    following: 10,
-    created_at: "2020-01-01T00:00:00Z",
-    updated_at: "2023-01-01T00:00:00Z"
+    public_repos: 45,
+    followers: 7,
+    following: 18,
+    created_at: "2022-06-11T02:52:50Z",
+    updated_at: "2026-01-14T19:10:39Z"
 };
 
 export const mockRepos = [
     {
         id: 1,
-        name: "awesome-styler",
-        html_url: "https://github.com/igorrm19/awesome-styler",
-        description: "A tool to style your web apps dynamically.",
+        name: "Battle_Space",
+        html_url: "https://github.com/igorrm19/Battle_Space",
+        description: "A space battle game built with JavaScript.",
         fork: false,
         language: "JavaScript",
-        stargazers_count: 5,
-        updated_at: "2023-10-15T12:00:00Z",
-        topics: ["css", "javascript", "web"]
+        stargazers_count: 0,
+        updated_at: "2026-01-19T01:11:40Z",
+        topics: []
     },
     {
         id: 2,
+        name: "c--Pastas",
+        html_url: "https://github.com/igorrm19/c--Pastas",
+        description: null,
+        fork: false,
+        language: "C++",
+        stargazers_count: 0,
+        updated_at: "2025-05-05T02:11:07Z",
+        topics: []
+    },
+    {
+        id: 3,
+        name: "portifolio",
+        html_url: "https://github.com/igorrm19/portifolio",
+        description: "My personal portfolio website.",
+        fork: false,
+        language: "HTML",
+        stargazers_count: 1,
+        updated_at: "2026-01-19T00:00:00Z",
+        topics: ["portfolio"]
+    },
+    {
+        id: 4,
         name: "react-clone",
         html_url: "https://github.com/igorrm19/react-clone",
         description: "A minimal clone of React for learning purposes.",
@@ -40,40 +62,7 @@ export const mockRepos = [
         topics: ["react", "library"]
     },
     {
-        id: 3,
-        name: "forked-repo-example",
-        html_url: "https://github.com/igorrm19/forked-repo-example",
-        description: "This is a forked repo and should be hidden.",
-        fork: true,
-        language: "Python",
-        stargazers_count: 0,
-        updated_at: "2022-05-01T08:00:00Z",
-        topics: []
-    },
-    {
-        id: 4,
-        name: "portfolio-v1",
-        html_url: "https://github.com/igorrm19/portfolio-v1",
-        description: null, // Testing null description
-        fork: false,
-        language: "HTML",
-        stargazers_count: 2,
-        updated_at: "2021-08-15T14:45:00Z",
-        topics: ["portfolio"]
-    },
-    {
         id: 5,
-        name: "api-manager",
-        html_url: "https://github.com/igorrm19/api-manager",
-        description: "Manages heavy API traffic.",
-        fork: false,
-        language: "TypeScript",
-        stargazers_count: 8,
-        updated_at: "2023-12-05T09:15:00Z",
-        topics: ["api", "backend"]
-    },
-    {
-        id: 6,
         name: "game-engine-light",
         html_url: "https://github.com/igorrm19/game-engine-light",
         description: "Lightweight game engine for browser games.",

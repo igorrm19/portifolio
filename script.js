@@ -1,6 +1,6 @@
 import { mockUser, mockRepos } from './mockData.js';
 
-const IS_DEV_MODE = true;
+const IS_DEV_MODE = false;
 let currentUsername = 'igorrm19';
 const BASE_API_URL = 'https://api.github.com/users';
 
