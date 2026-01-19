@@ -101,12 +101,30 @@ ol {
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 1rem;
+    gap: 2rem;
     margin-right: 3rem;
+}
+
+.header_nav_bar_list_item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    gap: 0.5rem;
+}
+
+.header_nav_bar_list_item:hover {
+    cursor: pointer;
+    border-bottom: 2px solid orange;
+    padding-bottom: 5px;
 }
 
 main {
     min-height: 90vh;
     min-width: 100%;
     padding: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
 }
