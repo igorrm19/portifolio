@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./style.css">
-    <title>Portifolio</title>
+    <title>Portfólio</title>
 </head>
 
 <body>
@@ -18,22 +18,60 @@
             </svg>
             <h2 class="header__logo-text">igorrm19</h2>
         </div>
+
         <div class="header_div_nav_bar">
+            <div class="search-container">
+                <input type="text" id="search-input" placeholder="Buscar usuário..." aria-label="Buscar usuário">
+                <button id="search-btn">🔍</button>
+            </div>
+
             <nav class="header_nav_bar" id="header_nav_bar">
                 <ol class="header_nav_bar_list">
-                    <li class="header_nav_bar_list_item">perfil</li>
-                    <li class="header_nav_bar_list_item">projetos</li>
+                    <li class="header_nav_bar_list_item" id="btn-profile">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
+                            class="bi bi-person-circle" viewBox="0 0 16 16">
+                            <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0" />
+                            <path fill-rule="evenodd"
+                                d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8m8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1" />
+                        </svg>
+                        Perfil
+                    </li>
+                    <li class="header_nav_bar_list_item" id="btn-repos">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
+                            class="bi bi-postcard-heart-fill" viewBox="0 0 16 16">
+                            <path
+                                d="M2 2a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2zm6 2.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0m3.5.878c1.482-1.42 4.795 1.392 0 4.622-4.795-3.23-1.482-6.043 0-4.622M2 5.5a.5.5 0 0 1 .5-.5h3a.5.5 0 0 1 0 1h-3a.5.5 0 0 1-.5-.5m0 2a.5.5 0 0 1 .5-.5h3a.5.5 0 0 1 0 1h-3a.5.5 0 0 1-.5-.5m0 2a.5.5 0 0 1 .5-.5h3a.5.5 0 0 1 0 1h-3a.5.5 0 0 1-.5-.5" />
+                        </svg>
+                        Projetos
+                    </li>
                 </ol>
             </nav>
         </div>
-
     </header>
+
     <main class="main" id="main">
-        main
+        <section class="profile" id="profile-section">
+            <div class="profile-header">
+                <div class="profile__avatar">
+                    <div class="loading">Carregando Perfil...</div>
+                </div>
+                <div class="profile__info">
+                </div>
+            </div>
+            <div class="profile__readme hidden" id="readme-container">
+                <!-- Readme content will comprise HTML injected from GitHub API -->
+            </div>
+        </section>
+
+        <section class="repositories hidden" id="repos-section">
+            <h2 class="section-title">Repositórios</h2>
+            <div class="repos__grid" id="repos-grid">
+                <div class="loading">Carregando Repositórios...</div>
+            </div>
+        </section>
     </main>
 
-
-    <script src="./script.js"></script>
+    <script type="module" src="./script.js"></script>
 </body>
 
 </html>
