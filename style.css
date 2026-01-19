@@ -198,10 +198,9 @@ main {
 
 @media (min-width: 768px) {
     .profile {
-        flex-direction: row;
-        text-align: left;
+        /* Keep column to stack Header + Readme vertically */
         align-items: flex-start;
-        gap: 2rem;
+        text-align: left;
     }
 }
 
@@ -450,7 +449,12 @@ main {
     border-top: 1px solid var(--border-default);
     color: var(--text-primary);
     line-height: 1.6;
-    overflow-x: auto;
+    overflow-x: hidden;
+    /* Prevent horizontal scroll from large images */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* Center content like badges */
 }
 
 /* Markdown Styles (Generic) */
@@ -459,9 +463,13 @@ main {
 .profile__readme h3 {
     margin-bottom: 1rem;
     margin-top: 2rem;
-    border-bottom: 1px solid var(--border-muted);
+    /* Removed border-bottom to fix 'extra headers lines' issue */
+    border-bottom: none;
     padding-bottom: 0.5rem;
     color: var(--text-primary);
+    width: 100%;
+    text-align: center;
+    /* Center headers to match badges/images */
 }
 
 .profile__readme h1 {
@@ -478,11 +486,24 @@ main {
 
 .profile__readme p {
     margin-bottom: 1rem;
+    width: 100%;
+    text-align: center;
+    /* Center text/images in paragraphs */
+}
+
+.profile__readme div {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    width: 100%;
 }
 
 .profile__readme a {
     color: var(--accent-primary);
     text-decoration: none;
+    display: inline-block;
+    /* Helps with image links */
 }
 
 .profile__readme a:hover {
@@ -493,6 +514,11 @@ main {
 .profile__readme ol {
     margin-bottom: 1rem;
     padding-left: 2rem;
+    text-align: left;
+    /* Keep lists left aligned */
+    width: 100%;
+    max-width: 800px;
+    /* Readability */
 }
 
 .profile__readme img {
@@ -523,8 +549,20 @@ main {
 }
 
 .profile__readme blockquote {
-    border-left: 4px solid var(--border-default);
-    padding-left: 1rem;
+    border-left: none;
+    /* Removed side border */
+    padding-left: 0;
     color: var(--text-secondary);
     margin-bottom: 1rem;
+    font-style: italic;
+}
+
+.profile__readme hr {
+    border: none;
+    border-top: 1px solid var(--border-muted);
+    /* Subtle separator if needed, or none */
+    margin: 2rem auto;
+    width: 50%;
+    /* Not full width */
+    opacity: 0.3;
 }
