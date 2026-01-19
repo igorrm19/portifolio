@@ -75,14 +75,34 @@ header {
     min-width: 100%;
     padding: 2rem;
     background-color: var(--bg-tertiary);
+    color-scheme: dark;
+    overflow-wrap: break-word;
+    box-shadow: rgb(61, 68, 77) 0px -1px 0px 0px inset;
+    display: flex;
+    justify-content: space-around;
 }
 
 .header__logo {
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-start;
     width: 100%;
+    margin-left: 3rem;
     gap: 1rem;
+}
+
+
+.header_div_nav_bar {
+    gap: 1rem;
+}
+
+ol {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    margin-right: 3rem;
 }
 
 main {
