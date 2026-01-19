@@ -12,6 +12,7 @@ Meu portfólio pessoal feito com HTML, CSS e JavaScript. Consome a API do GitHub
 
 - Clone o repositório
 - Abra o arquivo index.html no seu navegador
+- Acesse o site https://igorrm19.github.io/portifolio/
 
 <img src="./public/Screenshot from 2026-01-19 08-08-56.png" alt="">
 
